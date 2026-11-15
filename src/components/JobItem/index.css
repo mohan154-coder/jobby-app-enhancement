@@ -1,0 +1,135 @@
+.job-item {
+  margin-bottom: 20px;
+  padding: 16px;
+  list-style-type: none;
+  background-color: #272727;
+  border-radius: 12px;
+}
+
+.job-item-link {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.job-item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.job-item-logo {
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+}
+
+.job-item-title {
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.job-item-rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-item-star-icon {
+  font-size: 20px;
+  color: #fbbf24;
+}
+
+.job-item-rating {
+  margin: 0 0 0 4px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.job-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.job-item-info-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.job-item-icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.job-item-icon {
+  margin-right: 6px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.job-item-text {
+  margin: 0;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.job-item-package {
+  margin: 0;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.job-item-line {
+  margin: 0 0 16px 0;
+  border: none;
+  border-top: 1px solid #7e858e;
+}
+
+.job-item-description-heading {
+  margin: 0 0 8px 0;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.job-item-description {
+  margin: 0;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .job-item {
+    padding: 24px;
+  }
+
+  .job-item-title {
+    font-size: 20px;
+  }
+
+  .job-item-rating {
+    font-size: 16px;
+  }
+
+  .job-item-package {
+    font-size: 20px;
+  }
+
+  .job-item-description-heading {
+    font-size: 18px;
+  }
+}

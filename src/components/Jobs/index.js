@@ -16,6 +16,29 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
+const locationsList = [
+  {
+    locationId: 'Hyderabad',
+    label: 'Hyderabad',
+  },
+  {
+    locationId: 'Bangalore',
+    label: 'Bangalore',
+  },
+  {
+    locationId: 'Chennai',
+    label: 'Chennai',
+  },
+  {
+    locationId: 'Delhi',
+    label: 'Delhi',
+  },
+  {
+    locationId: 'Mumbai',
+    label: 'Mumbai',
+  },
+]
+
 class Jobs extends Component {
   state = {
     profileDetails: {},
@@ -25,6 +48,7 @@ class Jobs extends Component {
     searchInput: '',
     employmentType: [],
     minimumPackage: '',
+    selectedLocations: [],
   }
 
   componentDidMount() {
@@ -132,6 +156,26 @@ class Jobs extends Component {
     this.setState({minimumPackage: salaryRangeId}, this.getJobs)
   }
 
+  changeLocation = locationId => {
+    this.setState(prevState => ({
+      selectedLocations: prevState.selectedLocations.includes(locationId)
+        ? prevState.selectedLocations.filter(each => each !== locationId)
+        : [...prevState.selectedLocations, locationId],
+    }))
+  }
+
+  getFilteredJobs = () => {
+    const {jobsList, selectedLocations} = this.state
+
+    if (selectedLocations.length === 0) {
+      return jobsList
+    }
+
+    return jobsList.filter(eachJob =>
+      selectedLocations.includes(eachJob.location),
+    )
+  }
+
   renderProfileSuccessView = () => {
     const {profileDetails} = this.state
     const {name, profileImageUrl, shortBio} = profileDetails
@@ -214,15 +258,15 @@ class Jobs extends Component {
   )
 
   renderJobsSuccessView = () => {
-    const {jobsList} = this.state
+    const filteredJobsList = this.getFilteredJobs()
 
-    if (jobsList.length === 0) {
+    if (filteredJobsList.length === 0) {
       return this.renderNoJobsView()
     }
 
     return (
       <ul className="jobs-list">
-        {jobsList.map(eachJob => (
+        {filteredJobsList.map(eachJob => (
           <JobItem key={eachJob.id} jobDetails={eachJob} />
         ))}
       </ul>
@@ -257,8 +301,10 @@ class Jobs extends Component {
             <FiltersGroup
               employmentTypesList={employmentTypesList}
               salaryRangesList={salaryRangesList}
+              locationsList={locationsList}
               changeEmploymentType={this.changeEmploymentType}
               changeSalaryRange={this.changeSalaryRange}
+              changeLocation={this.changeLocation}
             />
           </div>
 

@@ -4,8 +4,10 @@ const FiltersGroup = props => {
   const {
     employmentTypesList,
     salaryRangesList,
+    locationsList,
     changeEmploymentType,
     changeSalaryRange,
+    changeLocation,
   } = props
 
   const renderEmploymentTypes = () => (
@@ -49,12 +51,34 @@ const FiltersGroup = props => {
     </div>
   )
 
+  const renderLocations = () => (
+    <div className="filter-group">
+      <h1 className="filter-heading">Locations</h1>
+      <ul className="filters-list">
+        {locationsList.map(eachLocation => (
+          <li key={eachLocation.locationId} className="filter-item">
+            <input
+              type="checkbox"
+              id={eachLocation.locationId}
+              onChange={() => changeLocation(eachLocation.locationId)}
+            />
+            <label className="input-label" htmlFor={eachLocation.locationId}>
+              {eachLocation.label}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
   return (
     <div className="filters-group-container">
       <hr />
       {renderEmploymentTypes()}
       <hr />
       {renderSalaryRanges()}
+      <hr />
+      {renderLocations()}
     </div>
   )
 }

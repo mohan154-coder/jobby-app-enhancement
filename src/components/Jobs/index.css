@@ -166,7 +166,11 @@
   .filters-container {
     order: 0;
     flex-shrink: 0;
+    position: sticky;
+    top: 104px;
     width: 260px;
+    max-height: calc(100vh - 124px);
+    overflow-y: auto;
   }
 
   .jobs-content {
